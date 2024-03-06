@@ -1,7 +1,39 @@
+import copy
+
 from dash import Dash, html, dcc
 
+base_style = {'vertical-align': 'top',
+             'background-color': 'beige',
+             'margin': '10px auto',
+             'border-radius': '10px',
+             'box-shadow': '0px 0px 10px 0px rgba(0,0,0,0.1)',
+             'width': '90%',
+             'display': 'block',
+             'text-align': 'center',
+             'color': 'darkslategray'}
 
-def show_placeholder():
+
+def show_warning(base_style):
+    style = copy.deepcopy(base_style)
+    style['background-color'] = 'darkred'
+    style['color'] = 'white'
+    aux = html.Div(
+        children=[
+            html.Div(
+                children=[
+                    html.H1("Warning"),
+                    html.H3("This is an exemplary toy dashboard. The Data is fictional and does not represent any real-world scenario."),
+                ],
+                style={'vertical-align': 'top', 'padding': '10px'}
+            )
+        ],
+        style = style
+    )
+    return aux
+
+
+
+def show_placeholder(base_style):
     aux = html.Div(
         children=[
             html.Div(
@@ -12,15 +44,7 @@ def show_placeholder():
                 style={'vertical-align': 'top', 'padding': '10px'}
             )
         ],
-        style={'vertical-align': 'top',
-               'background-color': 'beige',
-               'margin': '10px auto',
-               'border-radius': '10px',
-               'box-shadow': '0px 0px 10px 0px rgba(0,0,0,0.1)',
-               'width': '90%',
-               'display': 'block',
-               'text-align': 'center',
-               'color': 'darkslategray'}
+        style=base_style
     )
     return aux
 
@@ -56,9 +80,10 @@ def generate_testimonial_box(image_id, text_id, reverse=False):
 
 base_layout = html.Div(
     children=[
+        show_warning(base_style),
         html.Div([
             html.Div(
-                children=[dcc.Graph(id='the_map', figure={}, style={'height':'60vh'})],
+                children=[dcc.Graph(id='the_map', figure={}, style={'height': '60vh'})],
                 style={'width': '100%', 'height': '60vh', 'vertical-align': 'top'}
             ),
             html.Div([
@@ -90,13 +115,13 @@ empty_tabs = dcc.Tabs(
     value='',
     children=[
         dcc.Tab(label='Project description',
-                children=[show_placeholder()]),
+                children=[show_placeholder(base_style)]),
         dcc.Tab(label='Before-After story',
-                children=[show_placeholder()]),
+                children=[show_placeholder(base_style)]),
         dcc.Tab(label='Testimonials',
-                children=[show_placeholder()]),
+                children=[show_placeholder(base_style)]),
         dcc.Tab(label='Project Progress',
-                children=[show_placeholder()])
+                children=[show_placeholder(base_style)])
     ]
 )
 
@@ -153,7 +178,7 @@ filled_tabs = dcc.Tabs([
                                'text-align': 'center'}
                     ),
                     html.Div(id='before_after_text', children=[],
-                             style={'padding':'20px'})
+                             style={'padding': '20px'})
                 ],
                 style={'vertical-align': 'top',
                        'width': '90%',
