@@ -5,5 +5,4 @@ pandas
 Pillow
 plotly
 gunicorn
-copy
 dash_auth
