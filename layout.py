@@ -83,8 +83,8 @@ base_layout = html.Div(
         show_warning(base_style),
         html.Div([
             html.Div(
-                children=[dcc.Graph(id='the_map', figure={}, style={'height': '60vh'})],
-                style={'width': '100%', 'height': '60vh', 'vertical-align': 'top'}
+                children=[dcc.Graph(id='the_map', figure={}, style={'height': '50vh'})],
+                style={'width': '100%', 'height': '50vh', 'vertical-align': 'top'}
             ),
             html.Div([
                 html.Div("Select a poverty indicator to be displayed on the map",
