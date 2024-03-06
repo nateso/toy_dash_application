@@ -1,0 +1,63 @@
+﻿project_id,date,indicator_1,indicator_2,indicator_name_1,indicator_name_2,disbursement,disbursement_description
+rice_sdp_04,2018-07-01,0,0,Road meters paved,Distributed Seeds (in tons),500000,scoping and road status assessment
+rice_sdp_04,2018-08-01,0,0,Road meters paved,Distributed Seeds (in tons),0,
+rice_sdp_04,2018-09-01,0,0,Road meters paved,Distributed Seeds (in tons),0,
+rice_sdp_04,2018-10-01,0,0,Road meters paved,Distributed Seeds (in tons),1500000,road work preparations
+rice_sdp_04,2018-11-01,0,10,Road meters paved,Distributed Seeds (in tons),0,
+rice_sdp_04,2018-12-01,0,0,Road meters paved,Distributed Seeds (in tons),0,
+rice_sdp_04,2019-01-01,100,0,Road meters paved,Distributed Seeds (in tons),4000000,road construction I
+rice_sdp_04,2019-02-01,200,0,Road meters paved,Distributed Seeds (in tons),0,
+rice_sdp_04,2019-03-01,200,0,Road meters paved,Distributed Seeds (in tons),0,
+rice_sdp_04,2019-04-01,1000,0,Road meters paved,Distributed Seeds (in tons),0,
+rice_sdp_04,2019-05-01,0,20,Road meters paved,Distributed Seeds (in tons),0,
+rice_sdp_04,2019-06-01,0,20,Road meters paved,Distributed Seeds (in tons),0,
+rice_sdp_04,2019-07-01,0,10,Road meters paved,Distributed Seeds (in tons),250000,midterm assessment
+rice_sdp_04,2019-08-01,0,0,Road meters paved,Distributed Seeds (in tons),0,
+rice_sdp_04,2019-09-01,0,0,Road meters paved,Distributed Seeds (in tons),0,
+rice_sdp_04,2019-10-01,0,0,Road meters paved,Distributed Seeds (in tons),4000000,road construction II
+rice_sdp_04,2019-11-01,500,10,Road meters paved,Distributed Seeds (in tons),0,
+rice_sdp_04,2019-12-01,500,0,Road meters paved,Distributed Seeds (in tons),0,
+rice_sdp_04,2020-01-01,100,0,Road meters paved,Distributed Seeds (in tons),0,
+rice_sdp_04,2020-02-01,100,0,Road meters paved,Distributed Seeds (in tons),0,
+rice_sdp_04,2020-03-01,100,0,Road meters paved,Distributed Seeds (in tons),0,
+rice_sdp_04,2020-04-01,200,0,Road meters paved,Distributed Seeds (in tons),0,
+rice_sdp_04,2020-05-01,500,20,Road meters paved,Distributed Seeds (in tons),0,
+rice_sdp_04,2020-06-01,630,20,Road meters paved,Distributed Seeds (in tons),250000,end assessment
+rice_sdp_04,2020-07-01,0,10,Road meters paved,Distributed Seeds (in tons),0,
+rice_sdp_01,2019-02-01,0,10000,Canal meters constructed,Disbursed Credits (in USD),750000,scoping and canal status assessment
+rice_sdp_01,2019-03-01,0,0,Canal meters constructed,Disbursed Credits (in USD),0,
+rice_sdp_01,2019-04-01,0,0,Canal meters constructed,Disbursed Credits (in USD),1500000,canal work preparations
+rice_sdp_01,2019-05-01,300,0,Canal meters constructed,Disbursed Credits (in USD),4000000,canal work initiation I
+rice_sdp_01,2019-06-01,300,0,Canal meters constructed,Disbursed Credits (in USD),0,
+rice_sdp_01,2019-07-01,400,10000,Canal meters constructed,Disbursed Credits (in USD),0,
+rice_sdp_01,2019-08-01,200,0,Canal meters constructed,Disbursed Credits (in USD),0,
+rice_sdp_01,2019-09-01,100,0,Canal meters constructed,Disbursed Credits (in USD),0,
+rice_sdp_01,2019-10-01,200,0,Canal meters constructed,Disbursed Credits (in USD),0,
+rice_sdp_01,2019-11-01,0,0,Canal meters constructed,Disbursed Credits (in USD),0,
+rice_sdp_01,2019-12-01,0,10000,Canal meters constructed,Disbursed Credits (in USD),0,
+rice_sdp_01,2020-01-01,0,0,Canal meters constructed,Disbursed Credits (in USD),0,
+rice_sdp_01,2020-02-01,500,0,Canal meters constructed,Disbursed Credits (in USD),250000,midterm assessment
+rice_sdp_01,2020-03-01,750,0,Canal meters constructed,Disbursed Credits (in USD),4000000,canal construction II
+rice_sdp_01,2020-04-01,750,0,Canal meters constructed,Disbursed Credits (in USD),0,
+rice_sdp_01,2020-05-01,500,10000,Canal meters constructed,Disbursed Credits (in USD),0,
+rice_sdp_01,2020-06-01,1000,0,Canal meters constructed,Disbursed Credits (in USD),0,
+rice_sdp_01,2020-07-01,1000,0,Canal meters constructed,Disbursed Credits (in USD),0,
+rice_sdp_01,2020-08-01,500,0,Canal meters constructed,Disbursed Credits (in USD),4000000,canal construction III
+rice_sdp_01,2020-09-01,500,0,Canal meters constructed,Disbursed Credits (in USD),0,
+rice_sdp_01,2020-10-01,500,10000,Canal meters constructed,Disbursed Credits (in USD),0,
+rice_sdp_01,2020-11-01,500,0,Canal meters constructed,Disbursed Credits (in USD),0,
+rice_sdp_01,2020-12-01,0,0,Canal meters constructed,Disbursed Credits (in USD),0,
+rice_sdp_01,2021-01-01,0,0,Canal meters constructed,Disbursed Credits (in USD),0,
+rice_sdp_01,2021-02-01,0,0,Canal meters constructed,Disbursed Credits (in USD),250000,end assessment
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
+,,,,,,,
