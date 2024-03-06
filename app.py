@@ -1,6 +1,8 @@
 from dash import Dash, html, dcc
 from dash.dependencies import Input, Output, State
 
+import dash_auth
+
 # import additional packages
 import pandas as pd
 import pickle
@@ -42,10 +44,16 @@ with(open(img_pth, 'rb')) as f:
 # load the indicator data
 indicator_df = data.import_indicator_df(indicator_pth)
 
+# ------------------------------- define valid usernames ---------------------------------------------------------------
+valid_dict = {
+    'example_user': 'no_real_data_99'
+}
+
 # ------------------------------- Initialise the dashboard -------------------------------------------------------------
 
 # initialise the app
 app = Dash(__name__, suppress_callback_exceptions=True)
+auth = dash_auth.BasicAuth(app, valid_dict)
 server = app.server
 # define the base layout
 app.layout = base_layout
