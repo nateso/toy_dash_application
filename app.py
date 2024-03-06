@@ -46,7 +46,7 @@ indicator_df = data.import_indicator_df(indicator_pth)
 
 # initialise the app
 app = Dash(__name__, suppress_callback_exceptions=True)
-
+server = app.server
 # define the base layout
 app.layout = base_layout
 
@@ -103,4 +103,5 @@ app.callback(
 # ------------------------- run the dashboard ---------------------------------------------------------------------------
 if __name__ == '__main__':
     #app.run_server(host="0.0.0.0")
-    app.run_server(debug = True)
+    #app.run_server(debug = True)
+    app.run_server()
