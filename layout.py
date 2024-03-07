@@ -54,16 +54,16 @@ def show_warning():
         children=[
             html.Div(
                 children=[
-                    html.H1("Warning"),
+                    html.H2("Warning"),
                     html.H3(
                         "This is an exemplary toy dashboard. The Data is fictional and does not represent any real-world scenario."),
                 ],
-                style={'vertical-align': 'top', 'padding': '10px', 'margin': '20px auto'}
+                style={'vertical-align': 'top', 'bottom': '3px', 'margin': '0px auto'}
             )
         ],
         style={
             'width': '95%',
-            'margin': '10px auto',
+            'margin': '0px auto',
             'display': 'block',
             'text-align': 'center',
             'background-color': 'darkred',
