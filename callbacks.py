@@ -9,6 +9,10 @@ import base64
 import warnings
 warnings.simplefilter("ignore", category=FutureWarning)
 
+# define some general styles
+overall_background_color = '#161d2f'
+base_color = '#1d283c'
+
 
 # Define the callback function to deal with the map
 def display_poverty(value, project_df, khm_01):
@@ -68,12 +72,15 @@ def display_poverty(value, project_df, khm_01):
         fig.add_trace(fig2.data[0])
 
     fig.update_layout(
-        margin={"r": 0, "t": 0, "l": 0, "b": 0}
-        # width='100%',
-        # height=420
+        margin={"r": 0, "t": 0, "l": 0, "b": 0},
+        paper_bgcolor=base_color,
+        plot_bgcolor=base_color,
+        font={'color': 'white'},
+        legend=dict(
+            bgcolor=base_color,
+            font={'color':'white'}
+        )
     )
-
-    # text = [f'You have selected {value}']
 
     return fig
 
@@ -125,30 +132,27 @@ def get_testimonials(clickData, testimonial_dict, image_data):
 
 # Second callback function to deal with the interactive points
 
-def display_click_data(clickData, project_df, image_data, indicator_df):
+def display_click_data(clickData, project_df, description_dict, before_after_dict, image_data, indicator_df):
     # get the clicked point id
     clicked_point_id = clickData['points'][0]['customdata'][0]
-
-    # make a dictionary for the project description
-    description_dict = dict(zip(project_df.project_id, project_df.description))
-    before_after_dict = dict(zip(project_df.project_id, project_df.before_after))
 
     # get the project name
     clicked_name = str(project_df.name[project_df.project_id == clicked_point_id].reset_index(drop=True)[0])
 
     # get the project description
     proj_des = description_dict[clicked_point_id]
+    project_text = html.Div([
+        html.H3(f"{clicked_name}"),
+        html.P(proj_des)
+    ])
 
     # get the before after text
     before_after = before_after_dict[clicked_point_id]
     before_after_text = before_after
 
+    #------ get the images -------------
     # get the proj img
     proj_img = get_img_src(image_data[clicked_point_id])
-    project_text = html.Div([
-        html.H3(f"{clicked_name}"),
-        html.P(proj_des)
-    ])
 
     # get the before image
     before_id = clicked_point_id + '_before'
@@ -174,16 +178,17 @@ def display_click_data(clickData, project_df, image_data, indicator_df):
 
 # Third callback function to generate the plot on project progress
 def update_progress_figure(value, clickData, indicator_df):
+
     clicked_point_id = clickData['points'][0]['customdata'][0]
 
     # get the project data, the disbursement data and the indicator data
     indicator_data = indicator_df[indicator_df.project_id == clicked_point_id].reset_index(drop=True)
-    indicator_data['cumsum'] = indicator_data[value].cumsum(axis=0)
+    indicator_data['Total'] = indicator_data[value].cumsum(axis=0)
 
-    indicator_data['ts'] = pd.to_datetime(indicator_data['ts'])
+    indicator_data['Date'] = pd.to_datetime(indicator_data['ts'])
 
     # get the indicator goal (in a dirty way)
-    indicator_goal = list(indicator_data['cumsum'])[-1]
+    indicator_goal = list(indicator_data['Total'])[-1]
 
     # get the y label
     ind_1_lab = indicator_data.indicator_name_1.values[0]
@@ -199,12 +204,18 @@ def update_progress_figure(value, clickData, indicator_df):
 
     x_lab = 'Date'
 
-    fig = px.line(indicator_data, 'ts', 'cumsum')
+    fig = px.line(indicator_data, 'Date', 'Total', hover_data = ['Total'])
     fig.data[0].update(mode='markers+lines')
     fig.add_hline(y=indicator_goal, line_dash="dash", line_color="green", annotation_text=f"Project Goal",
                   annotation_position="top right")
 
     fig.update_xaxes(title_text=x_lab)
     fig.update_yaxes(title_text=y_lab)
-    fig.update_layout(margin={"r": 0, "t": 10, "l": 0, "b": 10})
+    fig.update_layout(
+        margin={"r": 30, "t": 30, "l":30, "b": 30},
+        paper_bgcolor=overall_background_color,
+        plot_bgcolor=overall_background_color,
+        font=dict(color="white"),
+        hovermode="x unified"
+    )
     return fig

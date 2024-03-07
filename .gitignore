@@ -154,6 +154,7 @@ cython_debug/
 
 # project files
 convert_images.py
+excel_to_csv.py
 .gitignore.py
 
 # PyCharm

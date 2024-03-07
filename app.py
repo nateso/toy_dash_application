@@ -23,9 +23,12 @@ pvty_pth = f'{data_pth}/wealth_data/subnational_mpi.csv'
 geo_pth = f'{data_pth}/geo_boundaries/gadm41_KHM_1.json'
 
 project_pth = f'{data_pth}/cambodia_projects.csv'
+description_pth = f'{data_pth}/descriptions.csv'
 indicator_pth = f'{data_pth}/indicators.csv'
 testimonials_pth = f'{data_pth}/testimonials.csv'
+
 img_pth = pth = f'{data_pth}/image_data.pkl'
+
 
 # load the data
 pvty_data = data.import_geo_poverty_data(pvty_pth,geo_pth,cntry_code)
@@ -36,6 +39,11 @@ project_df = data.import_project_data(project_pth)
 # load the testimonial data
 testimonial_df = pd.read_csv(testimonials_pth)
 testimonial_dict = dict(zip(testimonial_df.testimonial_id, testimonial_df.testimonial))
+
+# load the description data
+description_df = pd.read_csv(description_pth)
+description_dict = dict(zip(description_df.project_id, description_df.description))
+before_after_dict = dict(zip(description_df.project_id, description_df.before_after))
 
 # load the image data
 with(open(img_pth, 'rb')) as f:
@@ -52,13 +60,21 @@ valid_dict = {
 # ------------------------------- Initialise the dashboard -------------------------------------------------------------
 
 # initialise the app
-app = Dash(__name__, suppress_callback_exceptions=True)
+app = Dash(
+    __name__,
+    meta_tags=[
+        {"name": "viewport", "content": "width=device-width, initial-scale=1.0"}
+    ],
+    suppress_callback_exceptions=True
+)
 auth = dash_auth.BasicAuth(app, valid_dict)
+
 server = app.server
 # define the base layout
 app.layout = base_layout
 
-# ------------------------------- Define the callbacks -----------------------------------------------------------------
+# ------------------------------- Define the callbacks -----------------------------------------------------------------:wq"
+
 # poverty map callback
 app.callback(
     Output('the_map', 'figure'),
@@ -98,7 +114,7 @@ app.callback(
         Output('dropdown_options', 'options')
     ],
     Input('the_map', 'clickData')
-)(lambda clickData: display_click_data(clickData, project_df, image_data, indicator_df))
+)(lambda clickData: display_click_data(clickData, project_df, description_dict, before_after_dict, image_data, indicator_df))
 
 app.callback(
     Output('progress_fig', 'figure'),

@@ -1,4 +1,4 @@
-﻿project_id,date,indicator_1,indicator_2,indicator_name_1,indicator_name_2,disbursement,disbursement_description
+project_id,date,indicator_1,indicator_2,indicator_name_1,indicator_name_2,disbursement,disbursement_description
 rice_sdp_04,2018-07-01,0,0,Road meters paved,Distributed Seeds (in tons),500000,scoping and road status assessment
 rice_sdp_04,2018-08-01,0,0,Road meters paved,Distributed Seeds (in tons),0,
 rice_sdp_04,2018-09-01,0,0,Road meters paved,Distributed Seeds (in tons),0,
@@ -49,15 +49,3 @@ rice_sdp_01,2020-11-01,500,0,Canal meters constructed,Disbursed Credits (in USD)
 rice_sdp_01,2020-12-01,0,0,Canal meters constructed,Disbursed Credits (in USD),0,
 rice_sdp_01,2021-01-01,0,0,Canal meters constructed,Disbursed Credits (in USD),0,
 rice_sdp_01,2021-02-01,0,0,Canal meters constructed,Disbursed Credits (in USD),250000,end assessment
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
-,,,,,,,
