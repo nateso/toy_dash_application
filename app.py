@@ -29,7 +29,6 @@ testimonials_pth = f'{data_pth}/testimonials.csv'
 
 img_pth = pth = f'{data_pth}/image_data.pkl'
 
-
 # load the data
 pvty_data = data.import_geo_poverty_data(pvty_pth,geo_pth,cntry_code)
 
@@ -127,5 +126,6 @@ app.callback(
 # ------------------------- run the dashboard ---------------------------------------------------------------------------
 if __name__ == '__main__':
     #app.run_server(host="0.0.0.0")
-    #app.run_server(debug = True)
-    app.run_server()
+    app.run_server(debug = True)
+    #app.run_server()
+

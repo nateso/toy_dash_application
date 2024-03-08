@@ -24,8 +24,15 @@ def display_poverty(value, project_df, khm_01):
         "End Date: %{customdata[5]}<extra></extra>"
     )
 
-    if value == 'no_indicator':
-        fig = px.scatter_mapbox(
+    hover_template_choropleth = (
+        "<b>%{customdata[0]}</b><br>"
+        "MPI: %{customdata[1]}<br>"
+        "MPI HR: %{customdata[2]}%<extra></extra>"
+    )
+
+    map_style = 'carto-positron'
+
+    scatter_fig = px.scatter_mapbox(
             data_frame=project_df,
             lat='lat',
             lon='lon',
@@ -34,44 +41,45 @@ def display_poverty(value, project_df, khm_01):
             custom_data=['project_id'],
             center={'lat': 12, 'lon': 105},
             zoom=5,
-            mapbox_style='carto-positron'
+            mapbox_style=map_style
         )
+    scatter_fig.update_traces(
+        hovertemplate=hover_template,
+        hoverlabel=dict(
+            bgcolor=base_color,
+            font=dict(color='white')
+        ),
+        marker=dict(
+            color='red',
+            size=10
+        )
+    )
 
-        fig.update_traces(hovertemplate=hover_template)
-
-    else:
+    if value != 'no_indicator':
         fig = px.choropleth_mapbox(
             khm_01,
             geojson=khm_01['geometry'],
             locations=khm_01.index,
             color=value,
-            mapbox_style='carto-positron',
+            mapbox_style=map_style,
             opacity=.3,
             center={'lat': 12, 'lon': 105},
             zoom=5,
             labels={
                 'mpi_region': 'MPI',
-                'hr_poor': 'MPI Headcount<br>Ratio'
-            }
-
+                'hr_poor': '% Poor',
+            },
+            hover_data=['subnational_region', 'mpi_region', 'hr_poor', 'GID_0']
         )
-
-        fig2 = px.scatter_mapbox(
-            data_frame=project_df,
-            lat='lat',
-            lon='lon',
-            hover_name='name',
-            hover_data=['project_id', 'name', 'location', 'funding_format', 'start', 'end'],
-            custom_data=['project_id'],
-            center={'lat': 12, 'lon': 105},
-            zoom=5,
-            mapbox_style='carto-positron',
+        fig.update_traces(
+            hovertemplate=hover_template_choropleth
         )
-        fig2.update_traces(hovertemplate=hover_template)
-
-        fig.add_trace(fig2.data[0])
+        fig.add_trace(scatter_fig.data[0])
+    else:
+        fig = scatter_fig
 
     fig.update_layout(
+        clickmode = 'event+select',
         margin={"r": 0, "t": 0, "l": 0, "b": 0},
         paper_bgcolor=base_color,
         plot_bgcolor=base_color,
@@ -81,17 +89,19 @@ def display_poverty(value, project_df, khm_01):
             font={'color':'white'}
         )
     )
-
     return fig
 
 
 # define a callback function to update the layout of the tabs once a point is clicked
 def update_tab_layout(clickData, empty_tabs, filled_tabs):
     if clickData:
-        return filled_tabs
+        customdata = clickData['points'][0]['customdata']
+        if 'KHM' not in customdata:
+            return filled_tabs
+        else:
+            return empty_tabs
     else:
         return empty_tabs
-
 
 def plot_static_image(image_data):
     height, width, _ = image_data.shape
@@ -114,6 +124,7 @@ def get_img_src(image_data):
 
 # callback function to populate the testimonial tab
 def get_testimonials(clickData, testimonial_dict, image_data):
+
     clicked_point_id = clickData['points'][0]['customdata'][0]
 
     # get the testimonial data

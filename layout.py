@@ -58,7 +58,7 @@ def show_warning():
                     html.H3(
                         "This is an exemplary toy dashboard. The Data is fictional and does not represent any real-world scenario."),
                 ],
-                style={'vertical-align': 'top', 'bottom': '3px', 'margin': '0px auto'}
+                style={'vertical-align': 'top', 'padding-bottom': '1px', 'padding-top': '1px', 'margin': '0px auto'}
             )
         ],
         style={
@@ -209,9 +209,10 @@ base_layout = (
 # --------------------------------- TABS -------------------------------------------------------------------------------
 
 empty_tabs = dcc.Tabs(
-    value='',
+    value='tab_0',
     children=[
-        dcc.Tab(label='Project description',
+        dcc.Tab(value='tab_0',
+                label='Project description',
                 children=[show_placeholder(base_style)],
                 style=basic_tab_style,
                 selected_style=selected_tab_style),
@@ -234,7 +235,7 @@ filled_tabs = dcc.Tabs(
     value='tab_0',
     children=[
         dcc.Tab(
-            id='tab_0',
+            value='tab_0',
             label='Project description',
             children=[
                 html.Div(
