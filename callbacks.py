@@ -10,8 +10,8 @@ import warnings
 warnings.simplefilter("ignore", category=FutureWarning)
 
 # define some general styles
-overall_background_color = '#161d2f'
-base_color = '#1d283c'
+overall_background_color = '#f5f7f7'
+base_color = '#f5f7f7'
 
 
 # Define the callback function to deal with the map
@@ -47,7 +47,7 @@ def display_poverty(value, project_df, khm_01):
         hovertemplate=hover_template,
         hoverlabel=dict(
             bgcolor=base_color,
-            font=dict(color='white')
+            font=dict(color='darkslategray')
         ),
         marker=dict(
             color='red',
@@ -69,7 +69,8 @@ def display_poverty(value, project_df, khm_01):
                 'mpi_region': 'MPI',
                 'hr_poor': '% Poor',
             },
-            hover_data=['subnational_region', 'mpi_region', 'hr_poor', 'GID_0']
+            hover_data=['subnational_region', 'mpi_region', 'hr_poor', 'GID_0'],
+            color_continuous_scale='Viridis'
         )
         fig.update_traces(
             hovertemplate=hover_template_choropleth
@@ -83,10 +84,10 @@ def display_poverty(value, project_df, khm_01):
         margin={"r": 0, "t": 0, "l": 0, "b": 0},
         paper_bgcolor=base_color,
         plot_bgcolor=base_color,
-        font={'color': 'white'},
+        font={'color': 'darkslategray'},
         legend=dict(
             bgcolor=base_color,
-            font={'color':'white'}
+            font={'color':'darkslategray'}
         )
     )
     return fig
@@ -226,7 +227,7 @@ def update_progress_figure(value, clickData, indicator_df):
         margin={"r": 30, "t": 30, "l":30, "b": 30},
         paper_bgcolor=overall_background_color,
         plot_bgcolor=overall_background_color,
-        font=dict(color="white"),
+        font=dict(color="darkslategray"),
         hovermode="x unified"
     )
     return fig

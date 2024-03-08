@@ -2,6 +2,8 @@ from dash import Dash, html, dcc
 from dash.dependencies import Input, Output, State
 
 import dash_auth
+import dash_bootstrap_components as dbc
+from dash_bootstrap_templates import load_figure_template
 
 # import additional packages
 import pandas as pd
@@ -64,8 +66,13 @@ app = Dash(
     meta_tags=[
         {"name": "viewport", "content": "width=device-width, initial-scale=1.0"}
     ],
-    suppress_callback_exceptions=True
+    suppress_callback_exceptions=True,
+    external_stylesheets=[dbc.themes.LUX]
 )
+
+# load the figure template
+load_figure_template('LUX')
+
 auth = dash_auth.BasicAuth(app, valid_dict)
 
 server = app.server
