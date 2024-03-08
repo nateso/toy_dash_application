@@ -1,8 +1,9 @@
 dash==2.14.2
+dash_auth
+dash_bootstrap_components
+dash_bootstrap_templates
 geopandas
 numpy
 pandas
 Pillow
 plotly
-gunicorn
-dash_auth
