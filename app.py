@@ -12,7 +12,7 @@ import pickle
 # load the app modules
 import data
 from layout import base_layout, empty_tabs, filled_tabs
-from callbacks import display_poverty, display_click_data, update_progress_figure, get_testimonials, update_tab_layout
+from callbacks import update_map, display_click_data, update_progress_figure, get_testimonials, update_tab_layout
 
 # ------------------------------- Define the global variables ----------------------------------------------------------
 # define the global data path
@@ -84,8 +84,12 @@ app.layout = base_layout
 # poverty map callback
 app.callback(
     Output('the_map', 'figure'),
-    Input('poverty_indicator', 'value'),
-)(lambda value: display_poverty(value, project_df, pvty_data))
+    [
+        Input('country_dropdown', 'value'),
+        Input('topic_dropdown', 'value'),
+        Input('poverty_dropdown', 'value'),
+    ]
+)(lambda country, topic, indicator: update_map(country, topic, indicator, project_df, pvty_data))
 
 # ToDO: change the layout of the map points as soon as the user clicks on it
 
@@ -133,7 +137,7 @@ app.callback(
 # ------------------------- run the dashboard ---------------------------------------------------------------------------
 if __name__ == '__main__':
     #app.run_server(host="0.0.0.0")
-    #app.run_server(debug = True)
-    app.run_server()
+    app.run_server(debug = True)
+    #app.run_server()
 
 

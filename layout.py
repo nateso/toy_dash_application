@@ -171,7 +171,6 @@ country_dropdown = html.Div(
             options=[
                 {'label': 'All countries', 'value': 'all'},
                 {'label': 'Cambodia', 'value': 'KHM'},
-                {'label': 'No countries', 'value': 'no_countries'}
             ],
             value='KHM',
             id='country_dropdown'
@@ -186,13 +185,13 @@ project_dropdown = html.Div(
         # add the dropdown menu
         dcc.Dropdown(
             options=[
-                {'label': 'All projects', 'value': 'all'},
+                {'label': 'All', 'value': 'all'},
                 {'label': 'Education', 'value': 'education'},
                 {'label': 'Infrastructure', 'value': 'infrastructure'},
-                {'label': 'No projects', 'value': 'no_projects'}
             ],
             value='infrastructure',
-            id='project_dropdown'
+            id='topic_dropdown',
+            multi=True
         )
     ],
     style=basic_dd_style
@@ -204,12 +203,11 @@ poverty_dropdown = html.Div(
         # add the dropdown menu
         dcc.Dropdown(
             options=[
-                {'label': 'No indicator', 'value': 'no_indicator'},
                 {'label': 'Multidimensional poverty index', 'value': 'mpi_region'},
                 {'label': 'Multidimensional poverty headcount ratio', 'value': 'hr_poor'}
             ],
-            value='no_indicator',
-            id='poverty_indicator'
+            value='',
+            id='poverty_dropdown'
         )
     ],
     style=basic_dd_style
