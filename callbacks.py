@@ -50,7 +50,7 @@ def display_poverty(value, project_df, khm_01):
             font=dict(color='darkslategray')
         ),
         marker=dict(
-            color='red',
+            color='darkred',
             size=10
         )
     )
