@@ -1,3 +1,3 @@
-project_id,name,location,region,lat,lon,funding,start,end
-rice_sdp_01,Canal Rehabilitation,Chhuk Khsach ,Kampong Thom,12.391061,105.114631,14750000,2019-02-01,2022-02-01
-rice_sdp_04,Cash for Works (CFW) Road Rehabilitation ,Santuk,Kampong Thom,12.763653,105.045605,10000000,2018-07-01,2020-07-01
+project_id,name,topic,country,location,region,lat,lon,funding,start,end
+rice_sdp_01,Canal Rehabilitation,infrastructure,KHM,Chhuk Khsach ,Kampong Thom,12.391061,105.114631,14750000,2019-02-01,2022-02-01
+rice_sdp_04,Cash for Works (CFW) Road Rehabilitation ,infrastructure,KHM,Santuk,Kampong Thom,12.763653,105.045605,10000000,2018-07-01,2020-07-01
