@@ -7,7 +7,6 @@ overall_background_color = '#161d2f'
 base_color = '#1d283c'
 side_panel_color = '#f5f7f7'
 
-
 base_style = {
     'vertical-align': 'top',
     'margin': '0px auto',
@@ -47,16 +46,15 @@ selected_tab_style = {
 # }
 
 
-
 warning_div = html.Div(
     children=[
         html.Div(
             children=[
-                html.H4("Warning", style = {'color': 'white'}),
+                html.H4("Warning", style={'color': 'white'}),
                 html.H6(
                     "This is an exemplary toy dashboard. The Data is fictional and does not represent any real-world scenario.",
-                    style = {'color': 'white',
-                             'padding-bottom': '5px'}
+                    style={'color': 'white',
+                           'padding-bottom': '5px'}
                 ),
             ],
             style={'vertical-align': 'top',
@@ -73,6 +71,8 @@ warning_div = html.Div(
         'border-radius': '5px',
     }
 )
+
+
 def show_placeholder(base_style):
     aux = html.Div(
         children=[
@@ -96,7 +96,7 @@ def generate_testimonial_box(image_id, text_id, reverse=False):
     )
     text = html.Div(
         children=[html.Div(id=text_id, children=[])],
-        style={'flex': '1', 'padding': '10px'}
+        style={'flex': '1', 'padding': '10px', 'text-align': 'left', 'line-height': '1.25'}
     )
     style = {
         'width': '90%',
@@ -118,9 +118,6 @@ def generate_testimonial_box(image_id, text_id, reverse=False):
         return html.Div(children=[image, text], style=style)
 
 
-
-
-
 # --------------------------------- Entry Layout -----------------------------------------------------------------------
 entry_layout = html.Div([
     dcc.ConfirmDialogProvider(
@@ -133,7 +130,7 @@ entry_layout = html.Div([
 
 # project name etc
 project_title = html.Div(
-    children = [
+    children=[
         html.Div(
             children=[
                 html.H3('Mapping for Transparency')
@@ -158,12 +155,12 @@ project_title = html.Div(
     ]
 )
 
-
 # -------------------------------- Dropdown menus --------------------------------------------------------------------------
 
 basic_dd_style = {
     'padding': '10px 20px 0px 20px',
-    'text-align': 'left'
+    'text-align': 'left',
+    'line-height': '1'
 }
 
 country_dropdown = html.Div(
@@ -180,7 +177,7 @@ country_dropdown = html.Div(
             id='country_dropdown'
         )
     ],
-    style = basic_dd_style
+    style=basic_dd_style
 )
 
 project_dropdown = html.Div(
@@ -198,7 +195,7 @@ project_dropdown = html.Div(
             id='project_dropdown'
         )
     ],
-    style = basic_dd_style
+    style=basic_dd_style
 )
 
 poverty_dropdown = html.Div(
@@ -215,9 +212,8 @@ poverty_dropdown = html.Div(
             id='poverty_indicator'
         )
     ],
-    style = basic_dd_style
+    style=basic_dd_style
 )
-
 
 # --------------------------------- Side Panel --------------------------------------------------------------------------
 basic_side_div_style = {
@@ -269,14 +265,14 @@ content = (
             # add the map
             html.Div(
                 children=[
-                    dcc.Graph(id='the_map', figure={}, style = {'height': '50vh'})
+                    dcc.Graph(id='the_map', figure={}, style={'height': '50vh'})
                 ],
                 style={
-                       'vertical-align': 'top',
-                       'margin': '10px auto',
-                       'height': '50vh',
-                       'width': '95%',
-                       'shadow': '0px 0px 10px 0px rgba(0,0,0,0.2)'
+                    'vertical-align': 'top',
+                    'margin': '10px auto',
+                    'height': '50vh',
+                    'width': '95%',
+                    'shadow': '0px 0px 10px 0px rgba(0,0,0,0.2)'
                 }
             ),
 
@@ -287,7 +283,7 @@ content = (
                 style=outer_tab_style
             ),
         ],
-        style = {
+        style={
             'display': 'flex',
             'flex-direction': 'column',
             'width': '80%',
@@ -305,13 +301,12 @@ main_panel = html.Div(
     ],
 )
 
-
 base_layout = html.Div(
     children=[
         side_panel,
         main_panel
     ],
-    style={'display':'flex', 'flex-direction':'column', 'justify-content':'space-between'}
+    style={'display': 'flex', 'flex-direction': 'column', 'justify-content': 'space-between'}
 )
 # --------------------------------- TABS -------------------------------------------------------------------------------
 
@@ -344,10 +339,21 @@ filled_tabs = dcc.Tabs(
                 html.Div(
                     children=[
                         html.Img(id='project_img',
-                                 style={'height': '200px', 'width': 'auto', 'padding': '20px 0px 0px 0px'}),
+                                 style={
+                                     'height': '200px',
+                                     'width': 'auto',
+                                     'padding': '0px 0px 0px 0px',
+                                     'vertical-align': 'top'
+                                 }),
                         html.Div(id='project_text',
                                  children=[],
-                                 style={'flex': '1', 'padding': '10px'}),
+                                 style={
+                                     'flex': '1',
+                                     'padding': '10px',
+                                     'text-align': 'left',
+                                     'line-height': '1.25'
+                                 }
+                                 )
                     ],
                     style=within_tab_style
                 )
@@ -384,11 +390,14 @@ filled_tabs = dcc.Tabs(
                         html.Div(id='before_after_text', children=[],
                                  style={'padding': '20px'})
                     ],
-                    style={'vertical-align': 'top',
-                           'width': '95%',
-                           'margin': '0px auto',
-                           'margin-bottom': '20px',
-                           }
+                    style={
+                        'vertical-align': 'top',
+                        'width': '95%',
+                        'margin': '0px auto',
+                        'margin-bottom': '20px',
+                        'text-align': 'left',
+                        'text-height': '1.25'
+                    }
                 )
             ],
             selected_style=selected_tab_style
@@ -409,7 +418,7 @@ filled_tabs = dcc.Tabs(
             children=[
                 html.Div(
                     children=[
-                        dcc.Graph(id='progress_fig', figure={}, style = {'height': '300px'}),
+                        dcc.Graph(id='progress_fig', figure={}, style={'height': '300px'}),
                         html.Div(
                             children=[
                                 html.Div("Select a progress indicator",
