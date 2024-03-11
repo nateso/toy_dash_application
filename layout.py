@@ -173,7 +173,7 @@ country_dropdown = html.Div(
                 {'label': 'Cambodia', 'value': 'KHM'},
                 {'label': 'No countries', 'value': 'no_countries'}
             ],
-            value='no_countries',
+            value='KHM',
             id='country_dropdown'
         )
     ],
@@ -191,7 +191,7 @@ project_dropdown = html.Div(
                 {'label': 'Infrastructure', 'value': 'infrastructure'},
                 {'label': 'No projects', 'value': 'no_projects'}
             ],
-            value='no_projects',
+            value='infrastructure',
             id='project_dropdown'
         )
     ],
