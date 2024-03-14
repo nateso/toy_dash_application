@@ -263,7 +263,12 @@ content = (
             # add the map
             html.Div(
                 children=[
-                    dcc.Graph(id='the_map', figure={}, style={'height': '50vh'})
+                    dcc.Graph(
+                        id='the_map',
+                        figure={},
+                        style={'height': '50vh'},
+                        config={'displayModeBar': False}
+                    )
                 ],
                 style={
                     'vertical-align': 'top',

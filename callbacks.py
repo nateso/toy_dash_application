@@ -67,6 +67,10 @@ def make_scatter_fig(project_df, map_style='carto-positron'):
         )
     )
 
+    scatter_fig.update_layout(
+        clickmode='event+select',
+    )
+
     return scatter_fig
 
 
@@ -128,11 +132,11 @@ def update_map(country, topic, indicator, project_df, pvty_data):
         if not project_df.empty:
             scatter_fig = make_scatter_fig(project_df)
             base_map.add_trace(scatter_fig.data[0])
+            base_map.update_layout(scatter_fig.layout)
         else:
             pass
 
     base_map.update_layout(
-        clickmode='event+select',
         margin={"r": 0, "t": 0, "l": 0, "b": 0},
         paper_bgcolor=base_color,
         plot_bgcolor=base_color,
